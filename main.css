@@ -1,0 +1,260 @@
+@font-face {
+  font-family: 'MainFont'; /* Give your font a name */
+  src: url('main_font.otf') format('opentype'); /* Path to your font file */
+  font-weight: normal;
+  font-style: normal;
+} 
+    /* General Styles */
+    body, html {
+      font-family: 'MainFont', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+      color: #ffffff; /* Light text color */
+      height: 100%; /* Ensure full height */
+    }
+
+    /* Full-page background wrapper */
+    #background-wrapper {
+      position: fixed; /* Fixed position to cover the entire viewport */
+      top: 0;
+      left: 0;
+      width: 100vw; /* Full width */
+      height: 100vh; /* Full height */
+      z-index: -1; /* Place it behind all other content */
+    }
+    /* Each section takes full screen */
+    section {
+        width: 100vw; /* Use viewport width */
+        height: 100vh; /* Use viewport height */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        box-sizing: border-box;
+        overflow: hidden; /* Prevent overflow */
+        position: relative; /* Ensure sections stack properly */
+        z-index: 1; /* Ensure content is above the background */
+      }
+  
+      /* Container for About, Privacy, Contact, and Generations sections */
+      .container {
+        width: 90%; /* Responsive width */
+        max-width: 800px; /* Maximum width */
+        min-height: 60vh; /* Increased vertical height */
+        background: rgba(30, 30, 30, 0.5); /* Semi-transparent dark container background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 40px 20px; /* Increased vertical padding */
+        box-sizing: border-box;
+        color: #ffffff; /* Light text color inside containers */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for better visibility */
+      }
+  
+      /* Ribbon Styles */
+      .ribbon {
+        position: absolute;
+        top: -50px; /* Start off-screen */
+        left: 0;
+        width: 100%;
+        background: rgba(30, 30, 30, 0.7); /* Semi-transparent ribbon background */
+        color: #e0e0e0; /* Light text color */
+        padding: 5px 0; /* Reduced vertical padding */
+        z-index: 1000;
+        box-sizing: border-box; /* Ensure padding is included in width */
+        display: flex;
+        justify-content: space-around; /* Evenly distribute buttons */
+        align-items: center;
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        opacity: 0; /* Start fully transparent */
+        animation: slideDownFadeIn 0.8s ease forwards; /* Add animation */
+      }
+  
+      /* Animation for Ribbon */
+      @keyframes slideDownFadeIn {
+        0% {
+          top: -50px; /* Start above the viewport */
+          opacity: 0; /* Fully transparent */
+        }
+        100% {
+          top: 0; /* Final position */
+          opacity: 1; /* Fully visible */
+        }
+      }
+  
+      /* Button Styles */
+      .ribbon-buttons {
+        display: flex;
+        width: 100%; /* Take full width of the ribbon */
+        justify-content: space-around; /* Distribute buttons evenly */
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      }
+  
+      .ribbon-buttons button {
+        background: transparent;
+        border: none; /* Remove border */
+        color: #ffffff; /* Light text color */
+        cursor: pointer;
+        font-size: 16px;
+        font-family: 'MainFont', Arial, sans-serif;
+        transition: color 0.3s ease;
+        flex: 1 1 auto; /* Allow buttons to grow and shrink */
+        text-align: center; /* Center text inside buttons */
+        padding: 5px; /* Minimal padding */
+        min-width: 80px; /* Minimum width for buttons */
+      }
+  
+      .ribbon-buttons button:hover {
+        color: #ff00d4;
+      }
+  
+      /* Generate Button Styling */
+      .btn {
+        --border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+        --border-width: 0.125em;
+        --curve-size: 0.5em;
+        --bg: #080312;
+        --color: white;
+        color: var(--color);
+        cursor: pointer;
+        /* use position: relative; so that BG is only for .btn */
+        position: relative;
+        place-content: center;
+        padding: 1em 2.2em; /* Increased padding for larger button */
+        font-size: 17px; /* Font size remains unchanged */
+        border: 0;
+      font-family: 'MainFont', Arial, sans-serif;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+        clip-path: polygon(
+          /* Top-left */ 0% var(--curve-size),
+          var(--curve-size) 0,
+          /* top-right */ 100% 0,
+          100% calc(100% - var(--curve-size)),
+          /* bottom-right 1 */ calc(100% - var(--curve-size)) 100%,
+          /* bottom-right 2 */ 0 100%
+        );
+        transition: color 250ms;
+      }
+      .btn::after,
+      .btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+      .btn::before {
+        background: var(--border-color);
+        background-size: 300% 300%;
+        animation: move-bg7234 5s ease infinite;
+        z-index: -2;
+      }
+      @keyframes move-bg7234 {
+        0% {
+          background-position: 31% 0%;
+        }
+        50% {
+          background-position: 70% 100%;
+        }
+        100% {
+          background-position: 31% 0%;
+        }
+      }
+      .btn::after {
+        background: var(--bg);
+        z-index: -1;
+        clip-path: polygon(
+          /* Top-left */ var(--border-width)
+            calc(var(--curve-size) + var(--border-width) * 0.5),
+          calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+          /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+          calc(100% - var(--border-width))
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+          /* bottom-right 1 */
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+            calc(100% - var(--border-width)),
+          /* bottom-right 2 */ var(--border-width) calc(100% - var(--border-width))
+        );
+        transition: clip-path 500ms;
+      }
+      .btn:where(:hover, :focus)::after {
+        clip-path: polygon(
+          /* Top-left */ calc(100% - var(--border-width))
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+          calc(100% - var(--border-width)) var(--border-width),
+          /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+          calc(100% - var(--border-width))
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+          /* bottom-right 1 */
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+            calc(100% - var(--border-width)),
+          /* bottom-right 2 */
+            calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+            calc(100% - var(--border-width))
+        );
+        transition: 200ms;
+      }
+      .btn:where(:hover, :focus) {
+        color: #ffffff;
+      }
+  
+      /* Landing Section Content Animation */
+      .landing-content {
+        opacity: 0; /* Start fully transparent */
+        transform: translateY(50px); /* Start below the viewport */
+        animation: slideUpFadeIn 1s ease forwards; /* Add animation */
+      }
+  
+      /* Animation for Landing Content */
+      @keyframes slideUpFadeIn {
+        0% {
+          opacity: 0; /* Fully transparent */
+          transform: translateY(50px); /* Below the viewport */
+        }
+        100% {
+          opacity: 1; /* Fully visible */
+          transform: translateY(0); /* Final position */
+        }
+      }
+  
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        /* Adjust font size for buttons on smaller screens */
+        .ribbon-buttons button {
+          font-size: 14px;
+          padding: 3px;
+        }
+        /* Reduce container padding on smaller screens */
+        .container {
+          padding: 30px 10px; /* Slightly reduced padding */
+        }
+      }
+  
+      @media (max-width: 480px) {
+        /* Further reduce font size for buttons on very small screens */
+        .ribbon-buttons button {
+          font-size: 12px;
+          padding: 2px;
+        }
+        /* Make container width full on very small screens */
+        .container {
+          width: 100%;
+          padding: 20px 5px; /* Minimal padding */
+        }
+        /* Adjust first button for smaller screens */
+        .btn {
+          font-size: 14px;
+          padding: 1em 1.8em; /* Adjusted padding for smaller screens */
+        }
+      }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background: linear-gradient(to right, rgba(56, 56, 56, 0) 0%, rgba(56, 56, 56, 1) 50%, rgba(56, 56, 56, 0) 100%);
+  font-size: 14px;
+  position: relative; /* Avoid sticky positioning conflicts */
+  margin-top: auto;
+  width: 100%;
+}

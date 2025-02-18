@@ -1,0 +1,23 @@
+/* styles.css */
+#animate_text {
+    display: inline-block; /* Ensures the animation applies correctly */
+    animation: smooth-shake 2s infinite ease-in-out;
+  }
+  
+  @keyframes smooth-shake {
+    0% {
+      transform: translate(0px, 0px) rotate(0deg); /* Start at the original position */
+    }
+    25% {
+      transform: translate(-2px, -2px) rotate(-2deg); /* Slight movement up-left and tilt */
+    }
+    50% {
+      transform: translate(2px, 2px) rotate(2deg); /* Slight movement down-right and tilt */
+    }
+    75% {
+      transform: translate(-1px, 1px) rotate(-0.5deg); /* Slight movement down-left and tilt */
+    }
+    100% {
+      transform: translate(0px, 0px) rotate(0deg); /* Return to the original position */
+    }
+  }

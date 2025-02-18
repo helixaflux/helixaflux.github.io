@@ -1,0 +1,79 @@
+form {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+padding: 15px; /* Apply equal padding on all sides */
+width: 100%; /* Adjust width to be relative to the body */
+box-sizing: border-box; /* Ensure padding is included in width calculation */
+max-width: 600px; /* Limit maximum width */
+border: 1px solid rgba(255, 255, 255, 0.2);
+background: rgba(36, 36, 36, 0.438); /* Semi-transparent background */
+}
+
+form > * {
+margin: 0; /* Remove any extra margin from children */
+width: 80%; /* Ensure child elements do not exceed form width */
+}
+
+  .text_area {
+    width: 100%;
+    position: relative;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    height: 9em;
+    font-size: 12px;
+  }
+  .text_area:focus {
+    outline: none;
+    border-color: #56c0e8;
+    background-color: #444;
+  }
+  canvas {
+    width: 100%;
+    position: relative;
+    border: 1px solid #444;
+    background-color: #222;
+  }
+  .button_form {
+    font-family: 'MainFont', Arial, sans-serif;
+    padding: 10px 10px;
+    font-size: 1em;
+    width: 100%;
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, border-width 0.5s ease;
+    background-color: #ff6f6f8a;
+    color: #999999;
+    border-style: solid; /* Important: Set a border-style */
+}
+
+.button_form:enabled {
+    background-color: rgba(114, 114, 114, 0.5);
+    border-color: white;
+    border-width: 1px;
+    color: white;
+    cursor: pointer;
+}
+
+.button_form:enabled:hover {
+    background-color: rgba(114, 114, 114, 0.7);
+}
+
+.tempo_loader_box {
+  max-width: 100px; /* Maximum width for larger screens */
+  visibility: hidden;
+  min-height: 1em; /* Minimum height for small screens */
+  display: flex; /* Enable flexbox layout */
+  position: absolute;
+  align-items: top; /* Vertically center-align items */
+  justify-content: center; /* Horizontally center-align items */
+  bottom: 46%; /* Adds spacing from the bottom */
+  left: 50%; /* Centers horizontally */
+  transform: translateX(-50%); /* Adjusts for exact horizontal centering */
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helixa Flux Image Generator</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="form.css">
+  <link rel="stylesheet" href="rubix_cube_loader_css.css">
+  <link rel="stylesheet" href="text_animation.css">
+  <link rel="stylesheet" href="generations_css.css">
+</head>
+<body>
+  <!-- Full-page background wrapper -->
+  <div id="background-wrapper"></div>
+
+  <!-- Vanta.js Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="background.js"></script>
+  <script src="smooth_scroll.js"></script>
+  <script src="generator.js" defer></script>
+  <script src="generations_script.js"></script>
+
+  <!-- Landing Section -->
+  <section id="landing">
+    <div class="ribbon">
+      <div class="ribbon-buttons">
+        <button onclick="scrollToSection('about')">About</button>
+        <button onclick="scrollToSection('contact')">Contact</button>
+        <button onclick="scrollToSection('generations')">Examples</button>
+        <button onclick="scrollToSection('content')">Generator</button>
+        <button onclick="scrollToSection('privacy')">Privacy</button>
+        <button onclick="scrollToSection('guide')">Guide</button>
+        <button onclick="scrollToSection('usage')">Usage</button>
+      </div>
+    </div>
+    <div class="landing-content">
+      <h1 style="font-size: 3.5rem; margin-bottom: 20px;" id="animate_text">Helixa Flux</h1>
+      <p style="font-size: 1.5rem; padding-bottom: 0.5em;">Generate Images for Free!</p>
+      <button class="btn" onclick="scrollToSection('content')">Generate</button>
+    </div>
+  </section>
+  <!-- About Me Section -->
+  <section id="about">
+    <div class="container">
+      <h1>About</h1>
+      <p>Welcome to Helixa Flux! We're all about making AI image generation simple, fast, and totally free. Whether you’re looking to create ultra-realistic images or explore your creative ideas with just a few simple prompts, we’ve got you covered. No sign-ups, no accounts—just pure, hassle-free image generation. You don’t need to worry about subscriptions or hidden fees, because our platform is completely free for everyone to use. Just type in your prompt, and watch the magic happen! We're here to make your creative process as easy and fun as possible. Enjoy creating, and feel free to share your amazing AI-generated art by sending it to us on our email!</p>
+    </div>
+  </section>
+  <!-- Privacy Policy Section -->
+  <section id="privacy">
+    <div class="container">
+      <h1>Privacy</h1>
+      <p>We highly value and respect your privacy. The images you generate on this platform remain entirely private and are not shared publicly. As a result, you are solely responsible for the content of the generated images. Additionally, we do not store any information you provide, including the prompts you enter. Since this platform is completely free, there is no need for us to store your data or any other information. The only input required is the prompt, and the only output you receive is the image generated based on your input. This platform is designed to allow users to freely create images without the need for sign-ups, log-ins, or account creation of any kind. You have complete freedom to generate the images you desire, but please note that you are fully responsible for the images produced based on your prompts. Enjoy your creative journey here!</p>
+    </div>
+  </section>
+  <!-- Contact Us Section -->
+  <section id="contact">
+    <div class="container">
+      <h1>Contact</h1>
+      <p>Got a question or suggestion? We’d love to hear from you! Feel free to reach out to us at any time! Whether you need support or have an awesome idea you’d like to share, our inbox is always open. We’re constantly looking to improve and add new features, so don’t hesitate to drop us a line with your thoughts or creative ideas. Your feedback means the world to us! Here's our email:</p>
+      <p style="font-size: 1.2rem;">helixaflux@gmail.com</p>
+      <footer>© Helixa Flux Image Generator. All Rights Reserved.</footer>
+    </div>
+  </section>
+  <!-- Guide Section -->
+  <section id="guide">
+    <div class="container">
+      <h1>Guide</h1>
+      <p>Craft prompts with clear, concise sentences, avoiding jargon. Use commas to separate details for clarity. Be specific—define colors, textures, and styles to guide the AI. Focus on the main subject, ensuring details support rather than overshadow it. Avoid excessive information to prevent confusion; balance specificity with simplicity. Structure prompts logically, starting with the subject and adding details gradually. Use adjectives effectively but avoid overly abstract terms. Ensure consistency to prevent contradictions that may affect accuracy. Provide context when necessary to help the AI generate coherent outputs. Refine prompts iteratively, testing variations for the best results. A structured, precise approach enhances AI-generated outputs while maintaining clarity and effectiveness.</p>
+    </div>
+  </section>
+  <!-- Usage Section -->
+  <section id="usage">
+    <div class="container">
+      <h1>Usage</h1>
+      <p>A well-crafted prompt should use clear, concise sentences and avoid overly technical language to ensure accurate interpretation by the AI. Strategic use of commas enhances clarity without adding complexity, while specificity in describing colors, textures, and styles ensures precise outputs. Focus on the primary subject or object, complemented by relevant details that don’t overshadow the main theme. Balance is key—too much detail can confuse, while too little may lead to ambiguity. Organize information logically, starting with the central focus and expanding gradually. Use adjectives judiciously to describe attributes but avoid abstract terms. Ensure consistency to prevent contradictions, and provide contextual background if needed for coherence. Finally, refine prompts iteratively through testing and adjustments for optimal results.</p>
+    </div>
+  </section>
+  <!-- Generations Section -->
+  <section id="generations">
+      <div class="generations_modal_content">
+        <span class="flip-button" onclick="flipImage()">Flip Image</span>
+        <!-- Image container with the image and text -->
+        <div class="image-container" id="imageContainer">
+          <img src="image_example_5.png" alt="Image" id="image">
+          <div class="text" id="imageText">
+            A quiet forest path, dappled sunlight filtering through the trees, soft moss covering the ground, a few fallen leaves scattered around, a gentle breeze rustling the branches above, the air fresh and cool, the atmosphere calm and serene.
+          </div>
+        </div>
+        <!-- Next Button -->
+        <span class="next-button" onclick="nextImage()">Next</span>
+      </div>
+  </section>
+  <!-- Content Section -->
+   <!-- Content Section (AI Image Generator) -->
+<section id="content">
+  <form>
+    <textarea class="text_area" id="prompt" placeholder="Try 'A realistic cat, walking down a cityscape at night.'" style="resize: none; overflow-y: auto; width:100%;"></textarea>
+    <button class="button_form" id="generate" type="button" disabled>
+      <span>Generate</span>
+    </button>
+    <canvas id="canvas" width="500" height="300"></canvas>
+    <div class="tempo_loader_box">
+    <div class="rubix_cube_loader">
+        <div class="rubix_cube_face rubix_cube_front">
+            <div class="rubix_cube_red"></div><div class="rubix_cube_green"></div><div class="rubix_cube_blue"></div>
+            <div class="rubix_cube_white"></div><div class="rubix_cube_yellow"></div><div class="rubix_cube_orange"></div>
+            <div class="rubix_cube_red"></div><div class="rubix_cube_green"></div><div class="rubix_cube_blue"></div>
+        </div>
+        <div class="rubix_cube_face rubix_cube_back">
+            <div class="rubix_cube_white"></div><div class="rubix_cube_yellow"></div><div class="rubix_cube_orange"></div>
+            <div class="rubix_cube_red"></div><div class="rubix_cube_green"></div><div class="rubix_cube_blue"></div>
+            <div class="rubix_cube_white"></div><div class="rubix_cube_yellow"></div><div class="rubix_cube_orange"></div>
+        </div>
+        <div class="rubix_cube_face rubix_cube_right">
+            <div class="rubix_cube_blue"></div><div class="rubix_cube_red"></div><div class="rubix_cube_green"></div>
+            <div class="rubix_cube_yellow"></div><div class="rubix_cube_orange"></div><div class="rubix_cube_white"></div>
+            <div class="rubix_cube_blue"></div><div class="rubix_cube_red"></div><div class="rubix_cube_green"></div>
+        </div>
+        <div class="rubix_cube_face rubix_cube_left">
+            <div class="rubix_cube_green"></div><div class="rubix_cube_blue"></div><div class="rubix_cube_red"></div>
+            <div class="rubix_cube_orange"></div><div class="rubix_cube_white"></div><div class="rubix_cube_yellow"></div>
+            <div class="rubix_cube_green"></div><div class="rubix_cube_blue"></div><div class="rubix_cube_red"></div>
+        </div>
+        <div class="rubix_cube_face rubix_cube_top">
+            <div class="rubix_cube_yellow"></div><div class="rubix_cube_orange"></div><div class="rubix_cube_white"></div>
+            <div class="rubix_cube_green"></div><div class="rubix_cube_blue"></div><div class="rubix_cube_red"></div>
+            <div class="rubix_cube_yellow"></div><div class="rubix_cube_orange"></div><div class="rubix_cube_white"></div>
+        </div>
+        <div class="rubix_cube_face rubix_cube_bottom">
+            <div class="rubix_cube_orange"></div><div class="rubix_cube_white"></div><div class="rubix_cube_yellow"></div>
+            <div class="rubix_cube_blue"></div><div class="rubix_cube_red"></div><div class="rubix_cube_green"></div>
+            <div class="rubix_cube_orange"></div><div class="rubix_cube_white"></div><div class="rubix_cube_yellow"></div>
+        </div>
+    </div>
+    </div>
+    <button class="button_form" id="download" type="button" disabled>
+      <span>Download</span>
+    </button>
+  </form>
+</section>
+</body>
+</html>
