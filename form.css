@@ -33,7 +33,6 @@ width: 80%; /* Ensure child elements do not exceed form width */
   canvas {
     width: 100%;
     position: relative;
-    border: 1px solid #444;
     background-color: #222;
   }
   .button_form {
